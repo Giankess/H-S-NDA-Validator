@@ -4,6 +4,7 @@ from sqlalchemy.orm import Session
 from .db.session import get_db, engine
 from .db import models
 from .core.config import settings
+from .api.endpoints import documents, validation, feedback, training
 
 # Create database tables
 models.Base.metadata.create_all(bind=engine)
@@ -29,7 +30,7 @@ async def health_check():
     return {"status": "healthy"}
 
 # Import and include routers
-from .api.endpoints import documents, feedback, validation
 app.include_router(documents.router, prefix="/api/documents", tags=["documents"])
+app.include_router(validation.router, prefix="/api/validation", tags=["validation"])
 app.include_router(feedback.router, prefix="/api/feedback", tags=["feedback"])
-app.include_router(validation.router, prefix="/api/validation", tags=["validation"]) 
+app.include_router(training.router, prefix="/api/training", tags=["training"]) 

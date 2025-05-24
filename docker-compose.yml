@@ -13,6 +13,9 @@ services:
       - MINIO_SECRET_KEY=minioadmin
       - REDIS_URL=redis://redis:6379
       - VECTOR_DB_URL=http://qdrant:6333
+    volumes:
+      - ./backend:/app
+      - model_data:/app/models
     depends_on:
       - db
       - minio
@@ -73,4 +76,5 @@ volumes:
   postgres_data:
   minio_data:
   redis_data:
-  qdrant_data: 
+  qdrant_data:
+  model_data: 
