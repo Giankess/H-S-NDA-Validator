@@ -6,14 +6,13 @@ class Settings(BaseSettings):
     DATABASE_URL: str
     
     # MinIO settings
-    MINIO_URL: str
+    MINIO_URL: str = "minio:9000"  # Using container name instead of localhost
     MINIO_ACCESS_KEY: str
     MINIO_SECRET_KEY: str
-    MINIO_BUCKET_NAME: str = "nda-storage"
+    MINIO_BUCKET_NAME: str = "nda-validator"
     
-    # Pinecone settings
-    PINECONE_API_KEY: Optional[str] = None
-    PINECONE_ENVIRONMENT: Optional[str] = None
+    # Vector DB settings
+    VECTOR_DB_URL: str = "http://qdrant:6333"
     
     # Redis settings
     REDIS_URL: str = "redis://redis:6379"

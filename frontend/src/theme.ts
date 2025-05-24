@@ -1,5 +1,47 @@
 import { createTheme } from '@mui/material/styles';
 
+const typography = {
+  fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+  h1: {
+    fontSize: '2.5rem',
+    fontWeight: 500,
+    lineHeight: 1.2,
+  },
+  h2: {
+    fontSize: '2rem',
+    fontWeight: 500,
+    lineHeight: 1.2,
+  },
+  h3: {
+    fontSize: '1.75rem',
+    fontWeight: 500,
+    lineHeight: 1.2,
+  },
+  h4: {
+    fontSize: '1.5rem',
+    fontWeight: 500,
+    lineHeight: 1.2,
+  },
+  h5: {
+    fontSize: '1.25rem',
+    fontWeight: 500,
+    lineHeight: 1.2,
+  },
+  h6: {
+    fontSize: '1rem',
+    fontWeight: 500,
+    lineHeight: 1.2,
+  },
+  body1: {
+    fontSize: '1rem',
+    lineHeight: 1.5,
+  },
+  body2: {
+    fontSize: '0.875rem',
+    lineHeight: 1.43,
+  }
+};
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -23,57 +65,14 @@ const theme = createTheme({
       secondary: '#666666',
     },
   },
-  typography: {
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-    h1: {
-      fontSize: '2.5rem',
-      fontWeight: 500,
-      lineHeight: 1.2,
-    },
-    h2: {
-      fontSize: '2rem',
-      fontWeight: 500,
-      lineHeight: 1.2,
-    },
-    h3: {
-      fontSize: '1.75rem',
-      fontWeight: 500,
-      lineHeight: 1.2,
-    },
-    h4: {
-      fontSize: '1.5rem',
-      fontWeight: 500,
-      lineHeight: 1.2,
-    },
-    h5: {
-      fontSize: '1.25rem',
-      fontWeight: 500,
-      lineHeight: 1.2,
-    },
-    h6: {
-      fontSize: '1rem',
-      fontWeight: 500,
-      lineHeight: 1.2,
-    },
-    body1: {
-      fontSize: '1rem',
-      lineHeight: 1.5,
-    },
-    body2: {
-      fontSize: '0.875rem',
-      lineHeight: 1.43,
-    },
-    button: {
-      textTransform: 'none',
-      fontWeight: 500,
-    },
-  },
+  typography,
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
           borderRadius: 8,
           padding: '8px 16px',
+          textTransform: 'none',
         },
         contained: {
           boxShadow: 'none',

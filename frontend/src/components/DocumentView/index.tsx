@@ -27,7 +27,7 @@ const DocumentView: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
-  const { data: document, isLoading } = useQuery({
+  const { data: cleanDocument, isLoading } = useQuery({
     queryKey: ['clean-document', id],
     queryFn: async () => {
       const response = await axios.get(`/api/documents/${id}/clean`);
@@ -41,12 +41,14 @@ const DocumentView: React.FC = () => {
         responseType: 'blob',
       });
       const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', document?.metadata.original_filename || 'document.docx');
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
+      if (typeof document !== 'undefined') {
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', cleanDocument?.metadata.original_filename || 'document.docx');
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+      }
     } catch (error) {
       toast.error('Error downloading document');
       console.error('Download error:', error);
@@ -74,7 +76,7 @@ const DocumentView: React.FC = () => {
         Clean Document
       </Typography>
 
-      {document && (
+      {cleanDocument && (
         <>
           <Paper sx={{ p: 3, mb: 4 }}>
             <Box sx={{ mb: 3 }}>
@@ -82,16 +84,16 @@ const DocumentView: React.FC = () => {
                 Document Information
               </Typography>
               <Typography variant="body1">
-                Original Filename: {document.metadata.original_filename}
+                Original Filename: {cleanDocument.metadata.original_filename}
               </Typography>
               <Typography variant="body1">
-                Total Clauses: {document.metadata.total_clauses}
+                Total Clauses: {cleanDocument.metadata.total_clauses}
               </Typography>
               <Typography variant="body1">
-                Modified Clauses: {document.metadata.modified_clauses}
+                Modified Clauses: {cleanDocument.metadata.modified_clauses}
               </Typography>
               <Typography variant="body1">
-                Created: {new Date(document.created_at).toLocaleString()}
+                Created: {new Date(cleanDocument.created_at).toLocaleString()}
               </Typography>
             </Box>
 
@@ -109,7 +111,7 @@ const DocumentView: React.FC = () => {
                 fontFamily: 'monospace',
               }}
             >
-              {document.content}
+              {cleanDocument.content}
             </Paper>
           </Paper>
 

@@ -86,11 +86,7 @@ const typography = {
   body2: {
     fontSize: '0.875rem',
     lineHeight: 1.5,
-  },
-  button: {
-    textTransform: 'none',
-    fontWeight: 600,
-  },
+  }
 };
 
 // Component overrides
@@ -100,6 +96,8 @@ const components = {
       root: {
         borderRadius: 4,
         padding: '8px 16px',
+        textTransform: 'none',
+        variants: [],
       },
       contained: {
         boxShadow: 'none',
@@ -143,7 +141,25 @@ const theme = createTheme({
     '0px 8px 16px rgba(0, 0, 0, 0.05)',
     '0px 16px 24px rgba(0, 0, 0, 0.05)',
     '0px 24px 32px rgba(0, 0, 0, 0.05)',
-    ...Array(19).fill('none'),
+    '0px 2px 4px rgba(0, 0, 0, 0.1)',
+    '0px 4px 8px rgba(0, 0, 0, 0.1)',
+    '0px 8px 16px rgba(0, 0, 0, 0.1)',
+    '0px 16px 24px rgba(0, 0, 0, 0.1)',
+    '0px 24px 32px rgba(0, 0, 0, 0.1)',
+    '0px 2px 4px rgba(0, 0, 0, 0.15)',
+    '0px 4px 8px rgba(0, 0, 0, 0.15)',
+    '0px 8px 16px rgba(0, 0, 0, 0.15)',
+    '0px 16px 24px rgba(0, 0, 0, 0.15)',
+    '0px 24px 32px rgba(0, 0, 0, 0.15)',
+    '0px 2px 4px rgba(0, 0, 0, 0.2)',
+    '0px 4px 8px rgba(0, 0, 0, 0.2)',
+    '0px 8px 16px rgba(0, 0, 0, 0.2)',
+    '0px 16px 24px rgba(0, 0, 0, 0.2)',
+    '0px 24px 32px rgba(0, 0, 0, 0.2)',
+    '0px 2px 4px rgba(0, 0, 0, 0.25)',
+    '0px 4px 8px rgba(0, 0, 0, 0.25)',
+    '0px 8px 16px rgba(0, 0, 0, 0.25)',
+    '0px 16px 24px rgba(0, 0, 0, 0.25)'
   ],
 });
 
