@@ -1,18 +1,17 @@
 # H-S-NDA-Validator
 
-A sophisticated NDA (Non-Disclosure Agreement) validation system built with FastAPI, incorporating AI/ML capabilities for document analysis and processing.
+A sophisticated NDA (Non-Disclosure Agreement) validation system built with FastAPI, incorporating AI/ML capabilities for document analysis and processing. The system is completely self-contained and runs entirely in Docker containers.
 
 ## Features
 
 - Document processing and validation using FastAPI
-- AI-powered text analysis and comparison
+- AI-powered text analysis and comparison using local models
 - Secure document storage with MinIO
-- Vector database integration with Pinecone
+- Vector database integration with Qdrant
 - Redis caching for improved performance
 - PostgreSQL database for structured data storage
 - Authentication and authorization system
-- Integration with OpenAI and Anthropic AI models
-- Machine learning capabilities using PyTorch and Transformers
+- Local machine learning capabilities using PyTorch and Transformers
 
 ## Tech Stack
 
@@ -23,14 +22,12 @@ A sophisticated NDA (Non-Disclosure Agreement) validation system built with Fast
 - PostgreSQL (via psycopg2-binary)
 - Redis 5.0.1
 - MinIO 7.2.0
-- Pinecone 2.2.4
+- Qdrant 1.7.0
 
 ### AI/ML Components
 - PyTorch 2.2.1
 - Transformers 4.36.2
 - Sentence Transformers 2.2.2
-- OpenAI 1.3.5
-- Anthropic 0.7.4
 - LangChain 0.0.350
 
 ### Security
@@ -40,13 +37,8 @@ A sophisticated NDA (Non-Disclosure Agreement) validation system built with Fast
 
 ## Prerequisites
 
-- Python 3.8+
-- PostgreSQL
-- Redis
-- MinIO Server
-- Pinecone Account
-- OpenAI API Key
-- Anthropic API Key
+- Docker
+- Docker Compose
 
 ## Installation
 
@@ -56,46 +48,16 @@ git clone [https://github.com/Giankess/H-S-NDA-Validator]
 cd H-S-NDA-Validator
 ```
 
-2. Create and activate a virtual environment:
+2. Start the application:
 ```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+docker-compose up --build
 ```
 
-3. Install dependencies:
-```bash
-cd backend
-pip install -r requirements.txt
-```
-
-4. Set up environment variables:
-Create a `.env` file in the backend directory with the following variables:
-```env
-DATABASE_URL=postgresql://user:password@localhost:5432/dbname
-REDIS_URL=redis://localhost:6379
-MINIO_ENDPOINT=localhost:9000
-MINIO_ACCESS_KEY=your_access_key
-MINIO_SECRET_KEY=your_secret_key
-PINECONE_API_KEY=your_pinecone_key
-OPENAI_API_KEY=your_openai_key
-ANTHROPIC_API_KEY=your_anthropic_key
-```
-
-## Running the Application
-
-1. Start the FastAPI server:
-```bash
-cd backend
-uvicorn main:app --reload
-```
-
-The API will be available at `http://localhost:8000`
-
-## API Documentation
-
-Once the server is running, you can access:
-- Interactive API documentation: `http://localhost:8000/docs`
-- Alternative API documentation: `http://localhost:8000/redoc`
+The application will be available at:
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:8000
+- MinIO Console: http://localhost:9001
+- API Documentation: http://localhost:8000/docs
 
 ## Project Structure
 
@@ -105,6 +67,10 @@ H-S-NDA-Validator/
 │   ├── requirements.txt
 │   ├── main.py
 │   └── ...
+├── frontend/
+│   ├── package.json
+│   └── ...
+├── docker-compose.yml
 └── README.md
 ```
 
@@ -117,8 +83,6 @@ H-S-NDA-Validator/
 5. Create a Pull Request
 
 ## License
-
-
 
 ## Contact
 
